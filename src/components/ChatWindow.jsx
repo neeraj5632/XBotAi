@@ -30,6 +30,7 @@ const ChatWindow = ({ onSaveConversation }) => {
   return (
     <div className="chat-window">
       <header className="chat-header">
+        <h1>Bot AI</h1>
         <h2>How Can I Help You Today?</h2>
         <span className="ai-icon">Soul AI</span>
       </header>
