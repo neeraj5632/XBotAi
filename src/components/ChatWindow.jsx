@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import sampleData from "../data/sampleData";
+import sampleData from "../data/sampleData.js";
 import FeedbackForm from "./FeedbackForm";
 import "./ChatWindow.css";
 
