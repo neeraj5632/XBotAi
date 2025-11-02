@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import sampleData from "../data/sampleData.js";
 import FeedbackForm from "./FeedbackForm";
 import "./ChatWindow.css";
@@ -13,8 +13,17 @@ const ChatWindow = ({ onSaveConversation }) => {
     if (!input.trim()) return;
 
     const userMessage = { sender: "user", text: input };
+
+    // Normalize input to ensure exact match with sampleData keys
+    const normalizedInput = input.trim().toLowerCase();
+    const foundKey = Object.keys(sampleData).find(
+      (key) => key.toLowerCase() === normalizedInput
+    );
+
     const aiResponse =
-      sampleData[input] || "Sorry, Did not understand your query!";
+      (foundKey && sampleData[foundKey]) ||
+      "Sorry, Did not understand your query!";
+
     const botMessage = { sender: "bot", text: aiResponse };
 
     const updated = [...messages, userMessage, botMessage];
