@@ -1,0 +1,90 @@
+.app-container {
+  display: flex;
+  background-color: #1f1f3a;
+  color: white;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background: #b9aefc;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-window {
+  flex: 1;
+  background: #e8e5ff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.chat-body {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.message.user {
+  text-align: right;
+}
+
+.message.bot {
+  background: #dcd6f7;
+  margin: 10px 0;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+}
+
+.feedback-buttons {
+  display: none;
+  position: absolute;
+  right: 5px;
+  bottom: -25px;
+}
+
+.message.bot:hover .feedback-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+  .sidebar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #1e1e2e;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+}
