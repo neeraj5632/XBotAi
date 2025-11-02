@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ChatWindow from "./components/ChatWindow";
 import ConversationHistory from "./components/ConversationHistory";
@@ -6,10 +6,17 @@ import Sidebar from "./components/Sidebar";
 import "./App.css";
 
 const App = () => {
-  const [history, setHistory] = useState([]);
+  const [history, setHistory] = useState(() => {
+    const saved = localStorage.getItem("conversations");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("conversations", JSON.stringify(history));
+  }, [history]);
 
   const handleSaveConversation = (messages) => {
-    setHistory([...history, messages]);
+    setHistory((prev) => [...prev, messages]);
   };
 
   const handleNewChat = () => {

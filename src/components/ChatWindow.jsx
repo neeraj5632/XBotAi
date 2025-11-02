@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import sampleData from "../data/sampleData";
 import FeedbackForm from "./FeedbackForm";
-//simport "./ChatWindow.css";
+import "./ChatWindow.css";
 
 const ChatWindow = ({ onSaveConversation }) => {
   const [messages, setMessages] = useState([]);
@@ -17,7 +17,8 @@ const ChatWindow = ({ onSaveConversation }) => {
       sampleData[input] || "Sorry, Did not understand your query!";
     const botMessage = { sender: "bot", text: aiResponse };
 
-    setMessages([...messages, userMessage, botMessage]);
+    const updated = [...messages, userMessage, botMessage];
+    setMessages(updated);
     setInput("");
   };
 
@@ -28,10 +29,10 @@ const ChatWindow = ({ onSaveConversation }) => {
 
   return (
     <div className="chat-window">
-      <div className="chat-header">
+      <header className="chat-header">
         <h2>How Can I Help You Today?</h2>
-        <span className="ai-icon">🌐</span>
-      </div>
+        <span className="ai-icon">Soul AI</span>
+      </header>
 
       <div className="chat-body">
         {messages.map((msg, i) => (
